@@ -49,4 +49,11 @@ public class Product {
 		this.id = new UUID(0, 0);
 		this.createdOn = LocalDateTime.now();
 	}
+	
+	public Product(org.npc.testmodel.models.Product modelProduct) {
+		this.id = modelProduct.getId();
+		this.count = modelProduct.getCount();
+		this.createdOn = modelProduct.getCreatedOn();
+		this.lookupCode = modelProduct.getLookupCode();
+	}
 }
