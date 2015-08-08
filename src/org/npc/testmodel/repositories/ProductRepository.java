@@ -13,6 +13,7 @@ import org.npc.testmodel.models.fieldnames.ProductFieldNames;
 import org.npc.testmodel.repositories.interfaces.ProductRepositoryInterface;
 
 public class ProductRepository extends BaseRepository<Product> implements ProductRepositoryInterface {
+	@Override
 	public Product byLookupCode(String lookupCode) {
 		return this.firstOrDefaultWhere(
 			new WhereContainer(

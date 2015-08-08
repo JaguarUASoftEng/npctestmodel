@@ -77,7 +77,7 @@ public class Product extends BaseModel<Product> {
 		this.createdOn = LocalDateTime.now();
 	}
 	
-	public Product(UUID id, String connectionString) {
+	public Product(UUID id) {
 		super(id, new ProductRepository());
 		
 		this.count = -1;
