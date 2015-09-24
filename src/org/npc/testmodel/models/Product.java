@@ -74,12 +74,42 @@ public class Product extends BaseModel<Product> {
 		if(!(this.Quantity == Quantity))
 		{
 			this.Quantity = Quantity;
-			this.propertyChanged(ProductFieldNames.Quantity);
+			this.propertyChanged(ProductFieldNames.QUANTITY);
 		}
 		return this;
 	}
+	
+	private double Price;
+	public double getPrice(){
+		return this.Price;
+	}
+	public double setPrice(double Price){
+		if(!(this.Price == Price))
+		{
+			this.Price = Price;
+			this.propertyChanged(ProductFieldNames.PRICE);
+		}
+		return this;
+	}
+	
+	private UUID Id;
+	public UUID getId(){
+		return this.UUID;
+	}
+	
+	private double Cost;
+	public double getCost(){
+		return this.Cost;
+	}
+	public double setCost(double Cost){
+		if(!(this.Cost == Cost))
+		{
+			this.Cost = Cost;
+			this.propertyChanged(ProductFieldNames.COST);
+		}
+	}
 
-	private int count;
+	/*private int count;
 	public int getCount() {
 		return this.count;
 	}
@@ -90,7 +120,7 @@ public class Product extends BaseModel<Product> {
 		}
 		
 		return this;
-	}
+	}*/
 
 	private LocalDateTime createdOn;
 	public LocalDateTime getCreatedOn() {
