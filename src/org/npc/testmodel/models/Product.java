@@ -41,6 +41,43 @@ public class Product extends BaseModel<Product> {
 		
 		return this;
 	}
+	
+	private String Description;
+	public String getDescription(){
+		return this.Description;
+	}
+	public Product setDescription(String Description){
+		if(!StringUtils.equals(this.Description,Description)){
+			this.lookupCode = lookupCode;
+			this.propertyChanged(ProductFieldNames.DESCRIPTION);
+		}
+		return this;
+	}
+	
+	private Int ItemType;
+	public Int getItemType(){
+		return this.ItemType;
+	}
+	public Product setItemType(Int ItemType){
+		if(!(this.ItemType == ItemType)){
+			this.ItemType = ItemType;
+			this.propertyChanged(ProductFieldNames.ITEM_TYPE);
+		}
+		return this;
+	}
+	
+	private Int Quantity;
+	public Int getQuantity(){
+		return this.Quantity;
+	}
+	public Product setQuantity(Int Quantity){
+		if(!(this.Quantity == Quantity))
+		{
+			this.Quantity = Quantity;
+			this.propertyChanged(ProductFieldNames.Quantity);
+		}
+		return this;
+	}
 
 	private int count;
 	public int getCount() {
