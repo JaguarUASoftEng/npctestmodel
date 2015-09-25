@@ -101,23 +101,58 @@ public class Product extends BaseModel<Product> {
 	public double getCost(){
 		return this.Cost;
 	}
-	public double setCost(double Cost){
+	public Product setCost(double Cost){
 		if(!(this.Cost == Cost))
 		{
 			this.Cost = Cost;
 			this.propertyChanged(ProductFieldNames.COST);
 		}
+		return this;
 	}
 	
 	private int ReorderPoint;
-	public int getReorderPoint(int ReorderPoint)
+	public int getReorderPoint(){
+		return this.ReorderPoint;
+	}
+	public Product setReorderPoint(int ReorderPoint)
 	{
 		if(!(this.ReorderPoint == ReorderPoint))
 		{
 			this.ReorderPoint = ReorderPoint;
 			this.propertyChanged(ProductFieldNames.REORDER_POINT);
 		}
+		return this;
 	}
+	
+	private int RestockLevel;
+	public int getRestockLevel(){
+		return this.RestockLevel;
+	}
+	public Product setRestockLevel(int RestockLevel){
+		if(!(this.RestockLevel == RestockLevel))
+		{
+			this.RestockLevel = RestockLevel;
+			this.propertyChanged(ProductFieldNames.RESTOCK_LEVEL);
+		}
+		return this;
+	}
+	
+	private int ParentItem;
+	public int getParentItem(){
+		return this.ParentItem;
+	}
+	//Not sure if this should be changed
+	//must come back and confirm
+	public Product setParentItem(int ParentItem){
+		if(!(this.ParentItem == ParentItem))
+		{
+			this.ParentItem = ParentItem;
+			this.propertyChanged(ProductFieldNames.PARENT_ITEM);
+		}
+		return this;
+	}
+	
+	
 	
 	private int count;
 	public int getCount() {
