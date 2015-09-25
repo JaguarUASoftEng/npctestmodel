@@ -48,17 +48,17 @@ public class Product extends BaseModel<Product> {
 	}
 	public Product setDescription(String Description){
 		if(!StringUtils.equals(this.Description,Description)){
-			this.lookupCode = lookupCode;
+			this.Description = Description;
 			this.propertyChanged(ProductFieldNames.DESCRIPTION);
 		}
 		return this;
 	}
 	
-	private Int ItemType;
-	public Int getItemType(){
+	private int ItemType;
+	public int getItemType(){
 		return this.ItemType;
 	}
-	public Product setItemType(Int ItemType){
+	public Product setItemType(int ItemType){
 		if(!(this.ItemType == ItemType)){
 			this.ItemType = ItemType;
 			this.propertyChanged(ProductFieldNames.ITEM_TYPE);
@@ -66,11 +66,11 @@ public class Product extends BaseModel<Product> {
 		return this;
 	}
 	
-	private Int Quantity;
-	public Int getQuantity(){
+	private int Quantity;
+	public int getQuantity(){
 		return this.Quantity;
 	}
-	public Product setQuantity(Int Quantity){
+	public Product setQuantity(int Quantity){
 		if(!(this.Quantity == Quantity))
 		{
 			this.Quantity = Quantity;
@@ -83,7 +83,7 @@ public class Product extends BaseModel<Product> {
 	public double getPrice(){
 		return this.Price;
 	}
-	public double setPrice(double Price){
+	public Product setPrice(double Price){
 		if(!(this.Price == Price))
 		{
 			this.Price = Price;
@@ -92,9 +92,9 @@ public class Product extends BaseModel<Product> {
 		return this;
 	}
 	
-	private UUID Id;
-	public UUID getId(){
-		return this.UUID;
+	private UUID Identification;
+	public UUID getIdentification(){
+		return this.Identification;
 	}
 	
 	private double Cost;
@@ -108,8 +108,18 @@ public class Product extends BaseModel<Product> {
 			this.propertyChanged(ProductFieldNames.COST);
 		}
 	}
-
-	/*private int count;
+	
+	private int ReorderPoint;
+	public int getReorderPoint(int ReorderPoint)
+	{
+		if(!(this.ReorderPoint == ReorderPoint))
+		{
+			this.ReorderPoint = ReorderPoint;
+			this.propertyChanged(ProductFieldNames.REORDER_POINT);
+		}
+	}
+	
+	private int count;
 	public int getCount() {
 		return this.count;
 	}
@@ -120,7 +130,7 @@ public class Product extends BaseModel<Product> {
 		}
 		
 		return this;
-	}*/
+	}
 
 	private LocalDateTime createdOn;
 	public LocalDateTime getCreatedOn() {
