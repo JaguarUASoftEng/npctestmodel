@@ -152,7 +152,54 @@ public class Product extends BaseModel<Product> {
 		return this;
 	}
 	
+	private String ExtendedDescription;
+	public String getExtendedDescription(){
+		return ExtendedDescription;
+	}
+	public Product setExtendedDescription(String ExtendedDescription){
+		if(!(this.ExtendedDescription.equals(ExtendedDescription)))
+		{
+			this.ExtendedDescription = ExtendedDescription;
+			this.propertyChanged(ProductFieldNames.EXTENDED_DESCRIPTION);
+		}
+		return this;
+	}
 	
+	private int Active;
+	public int getActive(){
+		return Active;
+	}
+	public Product setActive(int Active){
+		if(!(this.Active == Active))
+		{
+			this.Active = Active;
+			this.propertyChanged(ProductFieldNames.ACTIVE);
+		}
+		return this;
+	}
+
+	private int MSRP;
+	public int getmsrp(){
+		return MSRP;
+	}
+	public Product setMSRP(int MSRP){
+		if(!(this.MSRP == MSRP))
+		{
+			this.MSRP = MSRP;
+			this.propertyChanged(ProductFieldNames.MSRP);
+		}
+		return this;
+	}
+
+	private Timestamp CreatedOn;
+	public Timestamp getCreateOn(){
+		return CreatedOn;
+	}
+	
+	public int ProductKey;
+	public int getProductKey(){
+		return ProductKey;
+	}
 	
 	private int count;
 	public int getCount() {
