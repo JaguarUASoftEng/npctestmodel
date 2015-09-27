@@ -3,6 +3,7 @@ package org.npc.testmodel.models.fieldnames;
 import org.npc.dataaccess.model.BaseFieldNames;
 
 public class ProductFieldNames extends BaseFieldNames {
+	public static final String ID = "id";
 	public static final String DESCRIPTION = "description";
 	public static final String LOOKUP_CODE = "lookupcode";
 	public static final String PRICE = "price";
@@ -16,5 +17,4 @@ public class ProductFieldNames extends BaseFieldNames {
 	public static final String ACTIVE = "active";
 	public static final String MSRP = "msrp";
 	public static final String CREATED_ON = "createdon";
-	public static final String COUNT = "count";
 }

@@ -15,31 +15,40 @@ import org.npc.testmodel.repositories.ProductRepository;
 public class Product extends BaseModel<Product> {
 	@Override
 	protected void fillFromRecord(ResultSet rs) throws SQLException {
+		this.id = (UUID)rs.getObject(ProductFieldNames.ID);
+		this.Description = rs.getString(ProductFieldNames.DESCRIPTION);
 		this.lookupCode = rs.getString(ProductFieldNames.LOOKUP_CODE);
-		this.count = rs.getInt(ProductFieldNames.COUNT);
+		this.Price = rs.getDouble(ProductFieldNames.PRICE);
+		this.ItemType = rs.getInt(ProductFieldNames.ITEM_TYPE);
+		this.Cost = rs.getDouble(ProductFieldNames.COST);
+		this.Quantity = rs.getInt(ProductFieldNames.QUANTITY);
+		this.ReorderPoint = rs.getInt(ProductFieldNames.REORDER_POINT);
+		this.RestockLevel = rs.getInt(ProductFieldNames.RESTOCK_LEVEL);
+		this.ParentItem = rs.getInt(ProductFieldNames.PARENT_ITEM);
+		this.ExtendedDescription = rs.getString(ProductFieldNames.EXTENDED_DESCRIPTION);
+		this.Active = rs.getInt(ProductFieldNames.ACTIVE);
+		this.MSRP = rs.getDouble(ProductFieldNames.MSRP);
 		this.createdOn = rs.getTimestamp(ProductFieldNames.CREATED_ON).toLocalDateTime();
 	}
 
 	@Override
 	protected Map<String, Object> fillRecord(Map<String, Object> record) {
+		record.put(ProductFieldNames.ID, this.id);
+		record.put(ProductFieldNames.DESCRIPTION, this.Description);
 		record.put(ProductFieldNames.LOOKUP_CODE, this.lookupCode);
-		record.put(ProductFieldNames.COUNT, this.count);
+		record.put(ProductFieldNames.PRICE, this.Price);
+		record.put(ProductFieldNames.ITEM_TYPE, this.ItemType);
+		record.put(ProductFieldNames.COST, this.Cost);
+		record.put(ProductFieldNames.QUANTITY, this.Quantity);
+		record.put(ProductFieldNames.REORDER_POINT, this.ReorderPoint);
+		record.put(ProductFieldNames.RESTOCK_LEVEL, this.RestockLevel);
+		record.put(ProductFieldNames.PARENT_ITEM, this.ParentItem);
+		record.put(ProductFieldNames.EXTENDED_DESCRIPTION, this.ExtendedDescription);
+		record.put(ProductFieldNames.ACTIVE, this.Active);
+		record.put(ProductFieldNames.MSRP, this.MSRP);
 		record.put(ProductFieldNames.CREATED_ON, Timestamp.valueOf(this.createdOn));
 		
 		return record;
-	}
-
-	private String lookupCode;
-	public String getLookupCode() {
-		return this.lookupCode;
-	}
-	public Product setLookupCode(String lookupCode) {
-		if (!StringUtils.equals(this.lookupCode, lookupCode)) {
-			this.lookupCode = lookupCode;
-			this.propertyChanged(ProductFieldNames.LOOKUP_CODE);
-		}
-		
-		return this;
 	}
 	
 	private String Description;
@@ -54,28 +63,16 @@ public class Product extends BaseModel<Product> {
 		return this;
 	}
 	
-	private int ItemType;
-	public int getItemType(){
-		return this.ItemType;
+	private String lookupCode;
+	public String getLookupCode() {
+		return this.lookupCode;
 	}
-	public Product setItemType(int ItemType){
-		if(!(this.ItemType == ItemType)){
-			this.ItemType = ItemType;
-			this.propertyChanged(ProductFieldNames.ITEM_TYPE);
+	public Product setLookupCode(String lookupCode) {
+		if (!StringUtils.equals(this.lookupCode, lookupCode)) {
+			this.lookupCode = lookupCode;
+			this.propertyChanged(ProductFieldNames.LOOKUP_CODE);
 		}
-		return this;
-	}
-	
-	private int Quantity;
-	public int getQuantity(){
-		return this.Quantity;
-	}
-	public Product setQuantity(int Quantity){
-		if(!(this.Quantity == Quantity))
-		{
-			this.Quantity = Quantity;
-			this.propertyChanged(ProductFieldNames.QUANTITY);
-		}
+		
 		return this;
 	}
 	
@@ -92,9 +89,16 @@ public class Product extends BaseModel<Product> {
 		return this;
 	}
 	
-	private UUID Identification;
-	public UUID getIdentification(){
-		return this.Identification;
+	private int ItemType;
+	public int getItemType(){
+		return this.ItemType;
+	}
+	public Product setItemType(int ItemType){
+		if(!(this.ItemType == ItemType)){
+			this.ItemType = ItemType;
+			this.propertyChanged(ProductFieldNames.ITEM_TYPE);
+		}
+		return this;
 	}
 	
 	private double Cost;
@@ -106,6 +110,19 @@ public class Product extends BaseModel<Product> {
 		{
 			this.Cost = Cost;
 			this.propertyChanged(ProductFieldNames.COST);
+		}
+		return this;
+	}
+	
+	private int Quantity;
+	public int getQuantity(){
+		return this.Quantity;
+	}
+	public Product setQuantity(int Quantity){
+		if(!(this.Quantity == Quantity))
+		{
+			this.Quantity = Quantity;
+			this.propertyChanged(ProductFieldNames.QUANTITY);
 		}
 		return this;
 	}
@@ -178,11 +195,11 @@ public class Product extends BaseModel<Product> {
 		return this;
 	}
 
-	private int MSRP;
-	public int getmsrp(){
+	private double MSRP;
+	public double getMSRP(){
 		return MSRP;
 	}
-	public Product setMSRP(int MSRP){
+	public Product setMSRP(double MSRP){
 		if(!(this.MSRP == MSRP))
 		{
 			this.MSRP = MSRP;
@@ -191,37 +208,41 @@ public class Product extends BaseModel<Product> {
 		return this;
 	}
 
-	private Timestamp CreatedOn;
-	public Timestamp getCreateOn(){
-		return CreatedOn;
-	}
-	
-	public int ProductKey;
-	public int getProductKey(){
-		return ProductKey;
-	}
-	
-	private int count;
-	public int getCount() {
-		return this.count;
-	}
-	public Product setCount(int count) {
-		if (this.count != count) {
-			this.count = count;
-			this.propertyChanged(ProductFieldNames.COUNT);
-		}
-		
-		return this;
-	}
-
 	private LocalDateTime createdOn;
 	public LocalDateTime getCreatedOn() {
 		return this.createdOn;
 	}
 	
+	public Product setCreatedOn(LocalDateTime date)
+	{
+		if(!(this.createdOn.isEqual(date)))
+		{
+			this.createdOn = LocalDateTime.of(date.toLocalDate(), date.toLocalTime());
+		}
+		return this;
+	}
+	
+	//Do we need a setter for this as well?
+	//Would that even make sense?
+	public int ProductKey;
+	public int getProductKey(){
+		return ProductKey;
+	}
+	
 	public org.npc.testmodel.api.Product synchronize(org.npc.testmodel.api.Product apiProduct) {
-		this.setCount(apiProduct.getCount());
+		this.setId(apiProduct.getId());
+		this.setDescription(apiProduct.getDescription());
 		this.setLookupCode(apiProduct.getLookupCode());
+		this.setPrice(apiProduct.getPrice());
+		this.setItemType(apiProduct.getItemType());
+		this.setCost(apiProduct.getCost());
+		this.setQuantity(apiProduct.getQuantity());
+		this.setReorderPoint(apiProduct.getReorderPoint());
+		this.setRestockLevel(apiProduct.getRestockLevel());
+		this.setParentItem(apiProduct.getParentItem());
+		this.setExtendedDescription(apiProduct.getExtendedDescription());
+		this.setActive(apiProduct.getActive());
+		this.setMSRP(apiProduct.getMSRP());
 		
 		apiProduct.setCreatedOn(this.createdOn);
 		
@@ -231,24 +252,55 @@ public class Product extends BaseModel<Product> {
 	public Product() {
 		super(new ProductRepository());
 		
-		this.count = -1;
+		this.id = UUID.randomUUID();
+		this.Description = "";
 		this.lookupCode = StringUtils.EMPTY;
+		this.Price = -1.0;
+		this.ItemType = -1;
+		this.Cost = -1.0;
+		this.Quantity = -1;
+		this.ReorderPoint = -1;
+		this.RestockLevel = -1;
+		this.ParentItem = -1;
+		this.ExtendedDescription = "";
+		this.Active = -1;
+		this.MSRP = -1.0;
 		this.createdOn = LocalDateTime.now();
 	}
 	
 	public Product(UUID id) {
 		super(id, new ProductRepository());
 		
-		this.count = -1;
+		this.Description = "";
 		this.lookupCode = StringUtils.EMPTY;
+		this.Price = -1.0;
+		this.ItemType = -1;
+		this.Cost = -1.0;
+		this.Quantity = -1;
+		this.ReorderPoint = -1;
+		this.RestockLevel = -1;
+		this.ParentItem = -1;
+		this.ExtendedDescription = "";
+		this.Active = -1;
+		this.MSRP = -1.0;
 		this.createdOn = LocalDateTime.now();
 	}
 
 	public Product(org.npc.testmodel.api.Product apiProduct) {
 		super(apiProduct.getId(), new ProductRepository());
 		
-		this.count = apiProduct.getCount();
+		this.Description = apiProduct.getDescription();
 		this.lookupCode = apiProduct.getLookupCode();
+		this.Price = apiProduct.getPrice();
+		this.ItemType = apiProduct.getItemType();
+		this.Cost = apiProduct.getCost();
+		this.Quantity = apiProduct.getQuantity();
+		this.ReorderPoint = apiProduct.getReorderPoint();
+		this.RestockLevel = apiProduct.getRestockLevel();
+		this.ParentItem = apiProduct.getParentItem();
+		this.ExtendedDescription = apiProduct.getExtendedDescription();
+		this.Active = apiProduct.getActive();
+		this.MSRP = apiProduct.getMSRP();
 
 		this.createdOn = LocalDateTime.now();
 	}
