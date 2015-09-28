@@ -103,7 +103,7 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 		this.setTransactionID(apiTransactionEntry.getTransactionID());
 		this.setRecordID(apiTransactionEntry.getRecordID());
 		this.setPrice(apiTransactionEntry.getPrice());
-		this.setQuantity(apiTransactionEntry.getPrice());
+		this.setQuantity(apiTransactionEntry.getQuantity());
 		
 		return apiTransactionEntry;
 	}
