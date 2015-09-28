@@ -209,7 +209,7 @@ public class Product {
 		
 		return this;
 	}
-	
+
 	public Product() {
 		this.id = UUID.randomUUID();
 		this.Description = "";
