@@ -52,7 +52,7 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	}
 	public TransactionEntry setTransactionID(long transactionID) {
 		if (this.transactionID != transactionID) {
-			this.transactionID = transactionID;
+			this.transactionID = transactionID
 			this.propertyChanged(TransactionEntryFieldNames.TRANSACTION_ID);
 		}
 		

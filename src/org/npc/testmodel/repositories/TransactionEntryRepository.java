@@ -20,7 +20,7 @@ public class TransactionEntryRepository extends BaseRepository<TransactionEntry>
 				(new WhereClause()).
 					postgreFunction(PostgreFunctionType.LOWER).
 					table(this.primaryTable).
-					fieldName(TransactionEntryFieldNames.RECORD_ID).
+					fieldName(TransactionEntryFieldNames.LOOKUP_CODE).
 					comparison(SQLComparisonType.EQUALS)
 			),
 			(ps) -> {
@@ -39,6 +39,6 @@ public class TransactionEntryRepository extends BaseRepository<TransactionEntry>
 	}
 	
 	public TransactionEntryRepository() {
-		super(DatabaseTable.TRANSACTIONENTRY);
+		super(DatabaseTable.TRANSACTION_ENTRY);
 	}
 }
