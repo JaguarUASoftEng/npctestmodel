@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.commons.lang3.StringUtils;
 
 
-public class TransactionEntry extends BaseModel<TransactionEntry> {
+public class TransactionEntry{
 	
 	protected UUID id;
 	public UUID getId(){
@@ -25,7 +25,6 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	public TransactionEntry setRecordID(long recordID) {
 		if (this.recordID != recordID) {
 			this.recordID = recordID;
-			this.propertyChanged(TransactionEntryFieldNames.RECORD_ID);
 		}
 		
 		return this;
@@ -37,8 +36,7 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	}
 	public TransactionEntry setTransactionID(long transactionID) {
 		if (this.transactionID != transactionID) {
-			this.transactionID = transactionID
-			this.propertyChanged(TransactionEntryFieldNames.TRANSACTION_ID);
+			this.transactionID = transactionID;
 		}
 		
 		return this;
@@ -51,7 +49,6 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	public TransactionEntry setProductID(long productID){
 		if(this.productID != productID){
 			this.productID = productID;
-			this.propertyChanged(TransactionEntryFieldNames.PRODUCT_ID);
 		}
 		
 		return this;
@@ -64,7 +61,6 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	public TransactionEntry setPrice(float price){
 		if(this.price != price){
 			this.price = price;
-			this.propertyChanged(TransactionEntryFieldNames.PRICE);
 		}
 		
 		return this;
@@ -77,7 +73,6 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	public TransactionEntry setQuantity(int quantity){
 		if(this.quantity != quantity){
 			this.quantity = quantity;
-			this.propertyChanged(TransactionEntryFieldNames.QUANTITY);
 		}
 		
 		return this;
