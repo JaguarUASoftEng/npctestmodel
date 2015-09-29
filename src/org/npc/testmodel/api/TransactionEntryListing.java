@@ -11,7 +11,7 @@ public class TransactionEntryListing {
 	public List<TransactionEntry> getTransactionEntries() {
 		return this.transactionEntries;
 	}
-	public ProductListing setTransactionEntries(List<TransactionEntry> transactionEntries) {
+	public TransactionEntryListing setTransactionEntries(List<TransactionEntry> transactionEntries) {
 		this.transactionEntries = transactionEntries;
 		return this;
 	}
