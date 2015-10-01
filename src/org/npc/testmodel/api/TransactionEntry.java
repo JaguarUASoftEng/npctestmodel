@@ -18,11 +18,11 @@ public class TransactionEntry{
 		return this;
 	}
 
-	private long recordID;
-	public long getRecordID() {
+	private int recordID;
+	public int getRecordID() {
 		return this.recordID;
 	}
-	public TransactionEntry setRecordID(long recordID) {
+	public TransactionEntry setRecordID(int recordID) {
 		if (this.recordID != recordID) {
 			this.recordID = recordID;
 		}
@@ -30,11 +30,11 @@ public class TransactionEntry{
 		return this;
 	}
 
-	private long transactionID;
-	public long getTransactionID() {
+	private int transactionID;
+	public int getTransactionID() {
 		return this.transactionID;
 	}
-	public TransactionEntry setTransactionID(long transactionID) {
+	public TransactionEntry setTransactionID(int transactionID) {
 		if (this.transactionID != transactionID) {
 			this.transactionID = transactionID;
 		}
@@ -42,23 +42,23 @@ public class TransactionEntry{
 		return this;
 	}	
 	
-	private long productID;
-	public long getProductID() {
+	private UUID productID;
+	public UUID getProductID() {
 		return this.productID;
 	}
-	public TransactionEntry setProductID(long productID){
-		if(this.productID != productID){
-			this.productID = productID;
+	public TransactionEntry setProductID(UUID productID){
+		if(!this.productID.equals(productID)){
+			this.productID = UUID.fromString(productID.toString());
 		}
 		
 		return this;
 	}
 	
-	private float price;
-	public float getPrice(){
+	private double price;
+	public double getPrice(){
 		return this.price;
 	}
-	public TransactionEntry setPrice(float price){
+	public TransactionEntry setPrice(double price){
 		if(this.price != price){
 			this.price = price;
 		}
@@ -105,7 +105,7 @@ public class TransactionEntry{
 	public TransactionEntry() {
 		
 		this.id = UUID.randomUUID();
-		this.productID = -1;
+		this.productID = UUID.randomUUID();
 		this.transactionID = -1;
 		this.recordID = -1;
 		this.price = -1;
@@ -118,7 +118,7 @@ public class TransactionEntry{
 	public TransactionEntry(org.npc.testmodel.models.TransactionEntry modelTransactionEntry) {
 				
 		this.id = modelTransactionEntry.getId();		
-		this.productID = modelTransactionEntry.getProductID();
+		this.productID = UUID.fromString(modelTransactionEntry.getProductID().toString());
 		this.transactionID = modelTransactionEntry.getTransactionID();
 		this.recordID = modelTransactionEntry.getRecordID();
 		this.price = modelTransactionEntry.getPrice();

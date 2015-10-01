@@ -15,10 +15,10 @@ import org.npc.testmodel.repositories.TransactionEntryRepository;
 public class TransactionEntry extends BaseModel<TransactionEntry> {
 	@Override
 	protected void fillFromRecord(ResultSet rs) throws SQLException {
-		this.recordID = rs.getLong(TransactionEntryFieldNames.RECORD_ID);
-		this.transactionID = rs.getLong(TransactionEntryFieldNames.TRANSACTION_ID);
-		this.productID = rs.getLong(TransactionEntryFieldNames.PRODUCT_ID);
-		this.price = rs.getFloat(TransactionEntryFieldNames.PRICE);
+		this.recordID = rs.getInt(TransactionEntryFieldNames.RECORD_ID);
+		this.transactionID = rs.getInt(TransactionEntryFieldNames.TRANSACTION_ID);
+		this.productID = (UUID)rs.getObject(TransactionEntryFieldNames.PRODUCT_ID);
+		this.price = rs.getDouble(TransactionEntryFieldNames.PRICE);
 		this.quantity = rs.getInt(TransactionEntryFieldNames.QUANTITY);
 	}
 
@@ -33,11 +33,11 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 		return record;
 	}
 
-	private long recordID;
-	public long getRecordID() {
+	private int recordID;
+	public int getRecordID() {
 		return this.recordID;
 	}
-	public TransactionEntry setRecordID(long recordID) {
+	public TransactionEntry setRecordID(int recordID) {
 		if (this.recordID != recordID) {
 			this.recordID = recordID;
 			this.propertyChanged(TransactionEntryFieldNames.RECORD_ID);
@@ -46,11 +46,11 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 		return this;
 	}
 
-	private long transactionID;
-	public long getTransactionID() {
+	private int transactionID;
+	public int getTransactionID() {
 		return this.transactionID;
 	}
-	public TransactionEntry setTransactionID(long transactionID) {
+	public TransactionEntry setTransactionID(int transactionID) {
 		if (this.transactionID != transactionID) {
 			this.transactionID = transactionID;
 			this.propertyChanged(TransactionEntryFieldNames.TRANSACTION_ID);
@@ -59,24 +59,25 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 		return this;
 	}	
 	
-	private long productID;
-	public long getProductID() {
+	private UUID productID;
+	public UUID getProductID() {
 		return this.productID;
 	}
-	public TransactionEntry setProductID(long productID){
-		if(this.productID != productID){
-			this.productID = productID;
+	public TransactionEntry setProductID(UUID productID){
+		if(!(this.productID.equals(productID)))
+		{
+			this.productID = UUID.fromString(productID.toString());
 			this.propertyChanged(TransactionEntryFieldNames.PRODUCT_ID);
 		}
 		
 		return this;
 	}
 	
-	private float price;
-	public float getPrice(){
+	private double price;
+	public double getPrice(){
 		return this.price;
 	}
-	public TransactionEntry setPrice(float price){
+	public TransactionEntry setPrice(double price){
 		if(this.price != price){
 			this.price = price;
 			this.propertyChanged(TransactionEntryFieldNames.PRICE);
@@ -111,7 +112,7 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	public TransactionEntry() {
 		super(new TransactionEntryRepository());
 		
-		this.productID = -1;
+		this.productID = UUID.randomUUID();
 		this.transactionID = -1;
 		this.recordID = -1;
 		this.price = -1;
@@ -121,7 +122,7 @@ public class TransactionEntry extends BaseModel<TransactionEntry> {
 	public TransactionEntry(UUID id) {
 		super(id, new TransactionEntryRepository());
 		
-		this.productID = -1;
+		this.productID = UUID.randomUUID();
 		this.transactionID = -1;
 		this.recordID = -1;
 		this.price = -1;
