@@ -2,7 +2,6 @@ package org.npc.testmodel.api;
 
 import java.util.UUID;
 import org.npc.testmodel.enums.TransactionEntryApiRequestStatus;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.commons.lang3.StringUtils;
 
 

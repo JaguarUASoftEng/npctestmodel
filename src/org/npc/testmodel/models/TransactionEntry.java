@@ -2,12 +2,9 @@ package org.npc.testmodel.models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
-import org.apache.commons.lang3.StringUtils;
 import org.npc.dataaccess.model.BaseModel;
 import org.npc.testmodel.models.fieldnames.TransactionEntryFieldNames;
 import org.npc.testmodel.repositories.TransactionEntryRepository;
