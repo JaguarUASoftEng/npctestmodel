@@ -12,7 +12,7 @@ import org.npc.testmodel.enums.ProductApiRequestStatus;
 public class TenderEntry
 {
 	protected UUID id;
-	private int transactionID;
+	private UUID transactionID;
 	private String tenderType;
 	private double amount;
 	private LocalDateTime createdOn;
@@ -30,16 +30,16 @@ public class TenderEntry
 		return this;
 	}
 	
-	public int getTransactionID()
+	public UUID getTransactionID()
 	{
 		return this.transactionID;
 	}
 	
-	public TenderEntry setTransactionID(int transactionID)
+	public TenderEntry setTransactionID(UUID transactionID)
 	{
-		if (this.transactionID != transactionID)
+		if (!this.transactionID.toString().equals(transactionID.toString()))
 		{
-			this.transactionID = transactionID;
+			this.transactionID = UUID.fromString(transactionID.toString());
 		}
 		return this;
 	}
@@ -119,7 +119,7 @@ public class TenderEntry
 		this.id = UUID.randomUUID();
 		this.tenderType = StringUtils.EMPTY;
 		this.amount = -1.0;
-		this.transactionID = -1;
+		this.transactionID = UUID.fromString("00000000-0000-0000-0000-000000000000");
 		this.createdOn = LocalDateTime.now();
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
@@ -128,9 +128,9 @@ public class TenderEntry
 	public TenderEntry(org.npc.testmodel.models.TenderEntry modelTenderEntry)
 	{
 		this.id = modelTenderEntry.getId();
-		this.tenderType = modelTenderEntry.getLookupCode();
-		this.amount = modelTenderEntry.getPrice();
-		this.transactionID = modelTenderEntry.getTransactionID;
+		this.tenderType = modelTenderEntry.getTenderType();
+		this.amount = modelTenderEntry.getAmount();
+		this.transactionID = UUID.fromString(modelTenderEntry.getTransactionID().toString());
 		this.createdOn = modelTenderEntry.getCreatedOn();
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
