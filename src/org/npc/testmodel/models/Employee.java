@@ -1,4 +1,4 @@
-package org.testmodel.api;
+package org.npc.testmodel.models;
 
 import java.util.UUID;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -115,14 +115,14 @@ public class Employee
 	
 	public String getPassword()
 	{
-		return this.passsword;
+		return this.password;
 	}
 
 	public Employee setPassword(String passsword)
 	{
-		if (!StringUtils.equals(this.passsword, passsword))
+		if (!StringUtils.equals(this.password, passsword))
 		{
-			this.passsword = passsword;
+			this.password = password;
 		}
 		return this;
 	}
@@ -139,13 +139,13 @@ public class Employee
 	public Employee()
 	{
 		this.r_id = UUID.randomUUID();
-		this.fname = StringUtilis.EMPTY;
-		this.lname = StringUtilis.EMPTY;
+		this.fname = "";
+		this.lname = "";
 		this.e_id = -1;
-		this.active = StringUtilis.EMPTY;
-		this.classification = StringUtilis.EMPTY;
-		this.manager = StringUtilis.EMPTY;
-		this.passsword = StringUtilis.EMPTY;
+		this.active = "";
+		this.classification = "";
+		this.manager = "";
+		this.password = "";
 	}
 	
 	public Employee(org.npc.testmodel.models.Employee modelEmployee)
@@ -157,7 +157,7 @@ public class Employee
 		this.active = modelEmployee.getActive();
 		this.classification = modelEmployee.getClassification();
 		this.manager = modelEmployee.getManager();
-		this.passsword = modelEmployee.getPassword();
+		this.password = modelEmployee.getPassword();
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
 	}

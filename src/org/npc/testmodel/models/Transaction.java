@@ -1,4 +1,4 @@
-package org.testmodel.api;
+package org.npc.testmodel.models;
 
 import java.util.UUID;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -53,7 +53,7 @@ public class Transaction
 		return this;
 	}
 	
-	public String getTransactonType()
+	public String getTransactionType()
 	{
 		return this.transactiontype;
 	}
@@ -67,21 +67,21 @@ public class Transaction
 		return this;
 	}
 	
-	public Transaction setApiRequestMessage(String apiRequestMessage)
+	/*public Transaction setApiRequestMessage(String apiRequestMessage)
 	{
 		if (!StringUtils.equalsIgnoreCase(this.apiRequestMessage, apiRequestMessage))
 		{
 			this.apiRequestMessage = apiRequestMessage;
 		}
 		return this;
-	}	
+	}*/	
 	
 	public Transaction()
 	{
 		this.r_id = UUID.randomUUID();
 		this.c_id = -1;
 		this.amount = -1;
-		this.transactiontype = StringUtils.EMPTY:
+		this.transactiontype = StringUtils.EMPTY;
 	}
 	
 	public Transaction(org.npc.testmodel.models.Transaction modelTransaction)
@@ -89,8 +89,8 @@ public class Transaction
 		this.r_id = modelTransaction.getR_ID();
 		this.c_id = modelTransaction.getC_ID();
 		this.amount = modelTransaction.getAmount();
-		this.transactiontype = modelTransaction.getTransactonType();
-		this.apiRequestMessage = StringUtils.EMPTY;
-		this.apiRequestStatus = ProductApiRequestStatus.OK;
+		this.transactiontype = modelTransaction.getTransactionType();
+		//this.apiRequestMessage = StringUtils.EMPTY;
+		//this.apiRequestStatus = ProductApiRequestStatus.OK;
 	}
 }
