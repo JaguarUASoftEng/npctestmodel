@@ -7,7 +7,7 @@ public enum TransactionEntryApiRequestStatus {
 	OK(0),
 	INVALID_INPUT(1),
 	UNKNOWN_ERROR(2),
-	LOOKUP_CODE_ALREADY_EXISTS(3);
+	RECORD_ID_ALREADY_EXISTS(3);
 	
 	public int getValue() {
 		return value;
