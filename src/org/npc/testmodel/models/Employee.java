@@ -127,14 +127,14 @@ public class Employee
 		return this;
 	}
 	
-	public Employee setApiRequestMessage(String apiRequestMessage)
+	/*public Employee setApiRequestMessage(String apiRequestMessage)
 	{
 		if (!StringUtils.equalsIgnoreCase(this.apiRequestMessage, apiRequestMessage))
 		{
 			this.apiRequestMessage = apiRequestMessage;
 		}
 		return this;
-	}
+	}*/
 	
 	public Employee()
 	{
@@ -158,8 +158,9 @@ public class Employee
 		this.classification = modelEmployee.getClassification();
 		this.manager = modelEmployee.getManager();
 		this.password = modelEmployee.getPassword();
-		this.apiRequestMessage = StringUtils.EMPTY;
+		/*this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
+		*/
 	}
 	
 }	
