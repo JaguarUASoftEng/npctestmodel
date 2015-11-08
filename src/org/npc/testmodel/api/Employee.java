@@ -100,6 +100,8 @@ public class Employee {
 		return this;
 	}
 	
+	//need to implement EmployeeApiRequestStatus
+	
 	private String apiRequestMessage;
 	public String getApiRequestMessage(){
 		return this.apiRequestMessage;
@@ -114,5 +116,12 @@ public class Employee {
 	public Employee()
 	{
 		this.r_id = UUID.randomUUID();
+		this.firstName = "";
+		this.lastName = "";
+		this.employeeID = 0;
+		this.active = "";
+		this.classification = "";
+		this.manager = "";
+		this.password = "";
 	}
 }
