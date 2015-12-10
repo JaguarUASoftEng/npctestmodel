@@ -113,9 +113,9 @@ public class Transaction extends BaseModel<Transaction>
 		this.transactiontype = StringUtils.EMPTY;
 	}
 	
-	public Transaction(org.npc.testmodel.models.Transaction modelTransaction)
+	public Transaction(org.npc.testmodel.api.Transaction modelTransaction)
 	{
-		super(modelTransaction.getId(), new TransactionRepository());
+		super(modelTransaction.getR_ID(), new TransactionRepository());
 		
 		this.r_id = modelTransaction.getR_ID();
 		this.c_id = modelTransaction.getC_ID();

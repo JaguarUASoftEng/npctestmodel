@@ -6,7 +6,8 @@ import java.util.Map;
 public enum TransactionApiRequestStatus {
 	OK(0),
 	INVALID_INPUT(1),
-	UNKNOWN_ERROR(2);
+	COLUMN_ALREADY_EXISTS(2),
+	UNKNOWN_ERROR(3);
 	
 	public int getValue(){
 		return value;
