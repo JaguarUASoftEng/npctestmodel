@@ -11,6 +11,7 @@ public class TransactionEntry{
 	public UUID getId(){
 		return this.id;
 	}
+	
 	public TransactionEntry setId(UUID id){
 		this.id = id;
 		
